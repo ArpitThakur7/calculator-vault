@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- NO <uses-permission android:name="android.permission.INTERNET"/> on purpose. -->
+    <!-- With no INTERNET permission the app physically cannot send anything off the phone. -->
+
+    <uses-permission android:name="android.permission.USE_BIOMETRIC" />
+
+    <!-- Read-only access to your photos/videos so you can pick which ones to
+         import into the vault. The vault itself lives in the app's own folder,
+         which needs no permission. Still NO internet permission. -->
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+    <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
+
+    <uses-feature
+        android:name="android.hardware.fingerprint"
+        android:required="false" />
+
+    <application
+        android:allowBackup="false"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="false"
+        android:icon="@drawable/ic_calc"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.CalcVault">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.CalcVault">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>
